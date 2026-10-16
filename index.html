@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#00A859">
-<meta name="description" content="MK Mintup - PIN code area eligibility checker for Kotak Partner ID registration.">
-<title>MK Mintup — Kotak Partner ID Eligibility Checker</title>
+<meta name="description" content="MK Mintup - PIN code area eligibility checker for NSDL and Retailer registration.">
+<title>MK Mintup — Area Eligibility Checker</title>
 
 <style>
 :root {
@@ -791,19 +791,6 @@ input[type=text]:focus {
   .checker { padding-left: max(18px, env(safe-area-inset-left)); padding-right: max(18px, env(safe-area-inset-right)); }
   .toast { bottom: max(24px, env(safe-area-inset-bottom)); }
 }
-/* ===== Flower rain celebration overlay (eligible result) ===== */
-#flowerRain {
-  position: fixed;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 9999;
-  display: none;
-}
-@media (prefers-reduced-motion: reduce) {
-  #flowerRain { display: none !important; }
-}
 </style>
 </head>
 <body>
@@ -832,8 +819,8 @@ input[type=text]:focus {
 <main>
 <section class="hero">
   <div class="badge"><i></i> FAST • RELIABLE • AREA CHECKER</div>
-  <h1>Check Area Eligibility for<br><span class="gradient">Kotak Partner ID Registration</span></h1>
-  <p>Enter your 6-digit PIN code to instantly verify whether your location is eligible for Kotak Partner ID Registration.</p>
+  <h1>Check Area Eligibility for<br><span class="gradient">NSDL & BC Registration</span></h1>
+  <p>Enter your 6-digit PIN code to instantly verify whether your location is clear for NSDL Retailer / Business Correspondent Registration.</p>
 
   <div class="trust-row">
     <span class="trust-chip">
@@ -856,9 +843,9 @@ input[type=text]:focus {
     <span class="bank-icon">
       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10 12 4l9 6"/><path d="M5 10v9M19 10v9M9 10v9M15 10v9"/><path d="M3 21h18"/></svg>
     </span>
-    Kotak Partner ID Network
+    NSDL Payments Bank Network
   </span>
-  <span>Area checks aligned with Kotak Partner ID onboarding guidelines</span>
+  <span>Area checks aligned with NSDL Payments Bank &amp; BC ID onboarding guidelines</span>
 </div>
 
 <section class="layout" id="checker">
@@ -870,7 +857,7 @@ input[type=text]:focus {
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--primary)"><path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg>
           Verify PIN Code
         </h2>
-        <p>Check whether your PIN code is in the allowed Kotak Partner ID zone.</p>
+        <p>Check whether your PIN code is in the allowed NSDL eligibility zone.</p>
       </div>
       <div class="stats">
         <div class="stat">
@@ -888,7 +875,7 @@ input[type=text]:focus {
           </span>
           <div>
             <b id="statStateCount">0</b>
-            <span>Districts Covered</span>
+            <span>Cities Covered</span>
           </div>
         </div>
       </div>
@@ -908,10 +895,10 @@ input[type=text]:focus {
         </div>
         <div class="hint">
           <span>Test Allowed PINs:</span>
-          <span class="sample-chip" onclick="testPin('110001')">110001 (New Delhi)</span>
-          <span class="sample-chip" onclick="testPin('400001')">400001 (Mumbai)</span>
-          <span class="sample-chip" onclick="testPin('560001')">560001 (Bangalore)</span>
-          <span class="sample-chip" onclick="testPin('700001')">700001 (Kolkata)</span>
+          <span class="sample-chip" onclick="testPin('110004')">110004 (Central Delhi)</span>
+          <span class="sample-chip" onclick="testPin('122007')">122007 (Gurgaon)</span>
+          <span class="sample-chip" onclick="testPin('131103')">131103 (Sonipat)</span>
+          <span class="sample-chip" onclick="testPin('854328')">854328 (Araria)</span>
         </div>
       </div>
       <button class="verify" id="verifyBtn">
@@ -924,7 +911,7 @@ input[type=text]:focus {
     <div class="result" id="result" aria-live="polite"></div>
 
     <p class="footer-note" id="about">
-      <strong>Note:</strong> This eligibility tool checks your PIN code against the Kotak Partner ID allowed-zone database.
+      <strong>Note:</strong> This eligibility tool checks your PIN code against the NSDL allowed-zone database.
       Only PIN codes in the allowed list are marked Eligible; every other PIN code is shown as Not Eligible.
     </p>
 
@@ -940,7 +927,7 @@ input[type=text]:focus {
 <div id="csvModal" style="display:none; position:fixed; inset:0; background:rgba(10,37,25,0.65); backdrop-filter:blur(8px); z-index:1000; align-items:center; justify-content:center; padding:16px;">
   <div style="background:#ffffff; max-width:600px; width:100%; border-radius:24px; padding:28px; box-shadow:0 25px 50px -12px rgba(0,0,0,0.25); border:1px solid #c8e8d8; position:relative;">
     <button id="closeCsvModalBtn" type="button" style="position:absolute; top:18px; right:20px; background:none; border:none; font-size:24px; cursor:pointer; color:#6b7280;">&times;</button>
-    <h3 style="margin:0 0 6px; font-size:22px; color:#0a2519;">📂 Kotak Partner ID Allowed PIN Database Update</h3>
+    <h3 style="margin:0 0 6px; font-size:22px; color:#0a2519;">📂 NSDL Allowed PIN Database Update</h3>
     <p style="margin:0 0 20px; font-size:14px; color:#4b5563;">Upload <strong>allowed_pincodes.csv</strong> file or paste CSV text to instantly update the allowed list.</p>
     
     <div id="dropZone" style="border:2px dashed #00A859; background:#e6f6ee; padding:24px; border-radius:18px; text-align:center; cursor:pointer; transition:background 0.2s;">
@@ -954,7 +941,7 @@ input[type=text]:focus {
 
     <div style="margin-top:16px;">
       <label style="font-size:12px; font-weight:700; color:#374151; display:block; margin-bottom:6px;">OR PASTE RAW CSV CONTENT:</label>
-      <textarea id="csvRawInput" rows="4" style="width:100%; border:1px solid #a2e0c0; border-radius:12px; padding:10px; font-family:monospace; font-size:12px; resize:vertical;" placeholder="pincode,district,state&#10;110001,New Delhi,Delhi"></textarea>
+      <textarea id="csvRawInput" rows="4" style="width:100%; border:1px solid #a2e0c0; border-radius:12px; padding:10px; font-family:monospace; font-size:12px; resize:vertical;" placeholder="city,pincode,reason,date&#10;CENTRAL DELHI,110004,NSDL allowed zone,16-09-2026"></textarea>
     </div>
 
     <div style="margin-top:18px; display:flex; gap:10px; justify-content:flex-end;">
@@ -964,32 +951,27 @@ input[type=text]:focus {
 </div>
 
 <footer class="footer">
-  © MK Mintup — Official Partner & Service Portal • <a href="https://mkmintup.com/" style="text-decoration: underline; color: var(--primary-dark);">mkmintup.com</a>
+  © MK Mintup — Official Retailer & Service Portal • <a href="https://mkmintup.com/" style="text-decoration: underline; color: var(--primary-dark);">mkmintup.com</a>
 </footer>
 
 <div class="toast" id="toast"></div>
 
-<canvas id="flowerRain" aria-hidden="true"></canvas>
-
 <script src="allowed_pincodes.js"></script>
 <script>
 /* ==========================================================================
- * KOTAK PARTNER ID PIN CODE ELIGIBILITY CHECKER  —  ALLOWED-LIST LOGIC
+ * NSDL PIN CODE ELIGIBILITY CHECKER  —  ALLOWED-LIST LOGIC
  * --------------------------------------------------------------------------
  * Behaviour:  a PIN code is "Eligible" ONLY if it exists in the allowed list.
  *             Every other PIN code is "Not Eligible".
  * The allowed data is loaded from allowed_pincodes.js -> window.ALLOWED_PINCODES
- * (an array of { pincode, city, state }). Keeping it in a separate file makes
- * future updates a one-line-per-PIN edit, with no touching of this logic.
- * An eligible result triggers a professional falling-flower-petals animation.
+ * (an array of { pincode, city }). Keeping it in a separate file makes future
+ * updates a one-line-per-PIN edit, with no touching of this logic.
  * ========================================================================== */
 
-/* ---- Build a fast lookup from the allowed data (pincode -> {city,state}) ---- */
+/* ---- Build a fast lookup from the allowed data (pincode -> city) ---- */
 const ALLOWED = new Map();
 (window.ALLOWED_PINCODES || []).forEach(function (item) {
-  if (item && item.pincode) {
-    ALLOWED.set(String(item.pincode), { city: item.city || "N/A", state: item.state || "N/A" });
-  }
+  if (item && item.pincode) ALLOWED.set(String(item.pincode), item.city || "");
 });
 
 /* ---- DOM references ---- */
@@ -1012,9 +994,9 @@ const importCsvBtn = document.getElementById("importCsvBtn");
 /* ---- Header stats ---- */
 function renderStats() {
   statTotalCount.textContent = ALLOWED.size.toLocaleString("en-IN");
-  const districts = new Set();
-  ALLOWED.forEach(function (v) { if (v && v.city) districts.add(v.city); });
-  statStateCount.textContent = districts.size.toLocaleString("en-IN");
+  const cities = new Set();
+  ALLOWED.forEach(function (city) { if (city) cities.add(city); });
+  statStateCount.textContent = cities.size.toLocaleString("en-IN");
 }
 
 /* ---- Lightweight toast ---- */
@@ -1034,7 +1016,7 @@ function esc(v) {
 }
 
 /* ==========================================================================
- * Core eligibility check — allowed-list model.
+ * Core eligibility check — INVERTED vs. the old blocked-list version.
  * ========================================================================== */
 function verifyPin() {
   const pin = pinInput.value.trim();
@@ -1045,34 +1027,32 @@ function verifyPin() {
   }
 
   if (ALLOWED.has(pin)) {
-    /* ELIGIBLE -> green "clear" banner + flower rain celebration */
-    const info = ALLOWED.get(pin) || { city: "N/A", state: "N/A" };
+    /* ELIGIBLE -> green "clear" banner */
+    const city = ALLOWED.get(pin) || "N/A";
     resultEl.className = "result show clear";
     resultEl.innerHTML =
       '<div class="result-top">' +
         '<div class="icon-circle">✅</div>' +
         '<div>' +
           '<h3>Area Eligible!</h3>' +
-          '<p>PIN Code: <strong>' + esc(pin) + '</strong> is in the Kotak Partner ID allowed zone.</p>' +
+          '<p>PIN Code: <strong>' + esc(pin) + '</strong> is in the NSDL allowed zone.</p>' +
         '</div>' +
       '</div>' +
       '<div class="result-grid">' +
         '<div class="info"><small>PIN CODE</small><b>' + esc(pin) + '</b></div>' +
-        '<div class="info"><small>DISTRICT</small><b>' + esc(info.city) + '</b></div>' +
-        '<div class="info"><small>STATE</small><b>' + esc(info.state) + '</b></div>' +
-        '<div class="info reason"><small>STATUS</small><b>Eligible for Kotak Partner ID</b></div>' +
+        '<div class="info"><small>CITY / DISTRICT</small><b>' + esc(city) + '</b></div>' +
+        '<div class="info"><small>STATUS</small><b>Eligible</b></div>' +
       '</div>' +
       '<div class="congrats-banner">' +
         '<h4>👏🎉 Congratulations! You are Eligible!</h4>' +
-        '<p>You are <strong>Eligible</strong> and can apply for Kotak Partner ID Registration now.</p>' +
+        '<p>You are <strong>Eligible</strong> and can apply for NSDL Registration now.</p>' +
         '<a class="cta-register" href="https://mkmintup.com/retailer/register" target="_blank" rel="noopener">' +
-          '<span>Apply for Kotak Partner ID Registration Now</span>' +
+          '<span>Apply for NSDL Registration Now</span>' +
           '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">' +
             '<line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>' +
           '</svg>' +
         '</a>' +
       '</div>';
-    startFlowerRain(7000);            // celebrate the eligible result
   } else {
     /* NOT ELIGIBLE -> red "blocked" banner */
     resultEl.className = "result show blocked";
@@ -1080,18 +1060,18 @@ function verifyPin() {
       '<div class="result-top">' +
         '<div class="icon-circle">⚠️</div>' +
         '<div>' +
-          '<h3>Kotak Partner ID Not Eligible</h3>' +
+          '<h3>NSDL BC ID Not Eligible</h3>' +
           '<p>PIN Code: <strong>' + esc(pin) + '</strong> is not in the allowed zone.</p>' +
         '</div>' +
       '</div>' +
       '<div class="result-grid">' +
         '<div class="info"><small>PIN CODE</small><b>' + esc(pin) + '</b></div>' +
         '<div class="info"><small>STATUS</small><b>Not Eligible</b></div>' +
-        '<div class="info reason"><small>REASON</small><b>PIN code not present in the Kotak Partner ID allowed zone</b></div>' +
+        '<div class="info reason"><small>REASON</small><b>PIN code not present in the NSDL allowed zone</b></div>' +
       '</div>' +
       '<div class="restricted-banner">' +
-        '<h4>❌ Kotak Partner ID Not Eligible</h4>' +
-        '<p>This PIN Code is outside the Kotak Partner ID allowed zone. Use the button below to continue with our Other Account Opening Service.</p>' +
+        '<h4>❌ NSDL BC ID Not Eligible</h4>' +
+        '<p>This PIN Code is outside the NSDL allowed zone. Use the button below to continue with our Other Account Opening Service.</p>' +
         '<a class="cta-other-service" href="https://www.mkmintup.com/service-details/e0e765c7-6917-4ec7-aaa4-ebbe64334639" target="_blank" rel="noopener">' +
           '<span>Visit Other Account Opening Service</span>' +
           '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">' +
@@ -1109,129 +1089,21 @@ function testPin(pin) {
 }
 
 /* ==========================================================================
- * FLOWER RAIN  —  professional falling colored flower petals celebration.
- * A lightweight canvas overlay: no libraries, mobile friendly, and it is
- * skipped entirely when the user prefers reduced motion.
- * ========================================================================== */
-const FLOWER_COLORS = ["#ff8fb1", "#ff5d8f", "#ffd166", "#ffffff", "#ff6b6b", "#f4a7c3", "#e0aaff", "#ffb703"];
-const flowerCanvas = document.getElementById("flowerRain");
-const flowerCtx = flowerCanvas ? flowerCanvas.getContext("2d") : null;
-let flowerPetals = [];
-let flowerRaf = null;
-let flowerStopAt = 0;
-let flowerLastSpawn = 0;
-
-function flowerResize() {
-  if (!flowerCanvas) return;
-  const dpr = Math.min(window.devicePixelRatio || 1, 2);
-  flowerCanvas.width = Math.floor(window.innerWidth * dpr);
-  flowerCanvas.height = Math.floor(window.innerHeight * dpr);
-  flowerCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
-}
-
-function makePetal(initial) {
-  const w = window.innerWidth;
-  return {
-    x: Math.random() * w,
-    y: initial ? Math.random() * window.innerHeight - window.innerHeight : -30 - Math.random() * 60,
-    size: 10 + Math.random() * 14,
-    collapse: 0.9 + Math.random() * 0.3,
-    vy: 1.2 + Math.random() * 2.0,
-    swayAmp: 20 + Math.random() * 40,
-    swaySpeed: 0.6 + Math.random() * 1.2,
-    swayPhase: Math.random() * Math.PI * 2,
-    rot: Math.random() * Math.PI * 2,
-    vr: (Math.random() - 0.5) * 0.04,
-    color: FLOWER_COLORS[(Math.random() * FLOWER_COLORS.length) | 0],
-    alpha: 0.75 + Math.random() * 0.25,
-    petals: 5 + ((Math.random() * 2) | 0)
-  };
-}
-
-function drawFlower(p) {
-  flowerCtx.save();
-  flowerCtx.translate(p.x, p.y);
-  flowerCtx.rotate(p.rot);
-  flowerCtx.globalAlpha = p.alpha;
-  flowerCtx.fillStyle = p.color;
-  const r = p.size * 0.5;
-  for (let i = 0; i < p.petals; i++) {
-    flowerCtx.beginPath();
-    flowerCtx.ellipse(0, -r * 0.75, r * 0.42, r * 0.85, 0, 0, Math.PI * 2);
-    flowerCtx.fill();
-    flowerCtx.rotate((Math.PI * 2) / p.petals);
-  }
-  flowerCtx.beginPath();
-  flowerCtx.globalAlpha = p.alpha;
-  flowerCtx.fillStyle = "#ffe08a";
-  flowerCtx.arc(0, 0, r * 0.32, 0, Math.PI * 2);
-  flowerCtx.fill();
-  flowerCtx.restore();
-}
-
-function flowerFrame(now) {
-  flowerCtx.clearRect(0, 0, window.innerWidth, window.innerHeight);
-
-  // continuous gentle spawn while the celebration window is open
-  if (now < flowerStopAt && now - flowerLastSpawn > 60) {
-    flowerPetals.push(makePetal(false));
-    flowerLastSpawn = now;
-  }
-
-  const H = window.innerHeight;
-  for (let i = flowerPetals.length - 1; i >= 0; i--) {
-    const p = flowerPetals[i];
-    p.swayPhase += p.swaySpeed * 0.02;
-    p.y += p.vy;
-    p.x += Math.sin(p.swayPhase) * (p.swayAmp * 0.02);
-    p.rot += p.vr;
-    drawFlower(p);
-    if (p.y > H + 40) flowerPetals.splice(i, 1);
-  }
-
-  if (now < flowerStopAt || flowerPetals.length > 0) {
-    flowerRaf = requestAnimationFrame(flowerFrame);
-  } else {
-    flowerCtx.clearRect(0, 0, window.innerWidth, window.innerHeight);
-    flowerCanvas.style.display = "none";
-    flowerRaf = null;
-  }
-}
-
-function startFlowerRain(duration) {
-  if (!flowerCtx) return;
-  // respect reduced-motion preference
-  if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-
-  flowerResize();
-  flowerCanvas.style.display = "block";
-  flowerStopAt = performance.now() + (duration || 7000);
-  flowerLastSpawn = 0;
-  // initial burst across the screen
-  for (let i = 0; i < 40; i++) flowerPetals.push(makePetal(true));
-  if (flowerRaf === null) flowerRaf = requestAnimationFrame(flowerFrame);
-}
-
-window.addEventListener("resize", function () { if (flowerCanvas && flowerCanvas.style.display === "block") flowerResize(); });
-
-/* ==========================================================================
  * ADMIN: update the ALLOWED list at runtime via CSV (file or pasted text).
- * CSV columns are flexible; we look for the first 6-digit field as the PIN, the
- * first alphabetic field as the district and the next as the state. The merged
- * list can be exported to the clipboard as JS to paste into allowed_pincodes.js.
+ * CSV columns are flexible; we look for the first 6-digit field as the PIN and
+ * the first non-numeric alphabetic column as the city. The merged list can be
+ * exported to the clipboard as JS to paste back into allowed_pincodes.js.
  * ========================================================================== */
 function parseCsvAndMerge(text) {
   const lines = text.split(/\r?\n/).map(function (l) { return l.trim(); }).filter(Boolean);
   let added = 0;
-  lines.forEach(function (line) {
+  lines.forEach(function (line, idx) {
     const cols = line.split(",").map(function (c) { return c.trim().replace(/^["']|["']$/g, ""); });
     const pin = cols.find(function (c) { return /^\d{6}$/.test(c); });
     if (!pin) return;                       // header line or line without a PIN
     if (ALLOWED.has(pin)) return;           // already present
-    const texts = cols.filter(function (c) { return c !== pin && /[a-zA-Z\u0900-\u097F]/.test(c); });
-    const city = texts[0] || "N/A";
-    const state = texts[1] || "N/A";
-    ALLOWED.set(pin, { city: city, state: state });
+    const city = cols.find(function (c) { return c !== pin && /[a-zA-Z\u0900-\u097F]/.test(c); }) || "N/A";
+    ALLOWED.set(pin, city);
     added++;
   });
   renderStats();
@@ -1240,12 +1112,11 @@ function parseCsvAndMerge(text) {
 
 function exportAllowedArray() {
   const rows = [];
-  ALLOWED.forEach(function (v, pin) { rows.push({ pincode: pin, city: v.city, state: v.state }); });
+  ALLOWED.forEach(function (city, pin) { rows.push({ pincode: pin, city: city }); });
   rows.sort(function (a, b) { return a.pincode.localeCompare(b.pincode); });
   return "window.ALLOWED_PINCODES = [\n" +
     rows.map(function (r) {
-      return '  { "pincode": "' + r.pincode + '", "city": "' + String(r.city).replace(/"/g, '\\"') +
-        '", "state": "' + String(r.state).replace(/"/g, '\\"') + '" }';
+      return '  { "pincode": "' + r.pincode + '", "city": "' + String(r.city).replace(/"/g, '\\"') + '" }';
     }).join(",\n") +
     "\n];";
 }
