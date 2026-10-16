@@ -958,7 +958,7 @@ input[type=text]:focus {
 
 <script src="allowed_pincodes.js"></script>
 <script>
-/* ==========================================================================
+* ==========================================================================
  * NSDL PIN CODE ELIGIBILITY CHECKER  —  ALLOWED-LIST LOGIC
  * --------------------------------------------------------------------------
  * Behaviour:  a PIN code is "Eligible" ONLY if it exists in the allowed list.
@@ -966,9 +966,9 @@ input[type=text]:focus {
  * The allowed data is loaded from allowed_pincodes.js -> window.ALLOWED_PINCODES
  * (an array of { pincode, city }). Keeping it in a separate file makes future
  * updates a one-line-per-PIN edit, with no touching of this logic.
- * ========================================================================== */
+ * ========================================================================== *
 
-/* ---- Build a fast lookup from the allowed data (pincode -> city) ---- */
+* ---- Build a fast lookup from the allowed data (pincode -> city) ---- *
 const ALLOWED = new Map();
 (window.ALLOWED_PINCODES || []).forEach(function (item) {
   if (item && item.pincode) ALLOWED.set(String(item.pincode), item.city || "");
